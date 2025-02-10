@@ -2,15 +2,15 @@ package xczcdjx.book.project.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.MainScope
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.launch
 import xczcdjx.book.project.service.TimeService
 
-class HomeViewModel{
+class HomeViewModel:ScreenModel{
     private val timeService=TimeService.instance
-    private val mainScope= MainScope()
     init {
-        mainScope.launch {
+        screenModelScope.launch {
             val timeEntityResp=timeService.getTime()
             println("timeEntityResp : $timeEntityResp")
         }
