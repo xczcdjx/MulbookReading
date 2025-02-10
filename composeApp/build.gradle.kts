@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    kotlin("plugin.serialization") version "2.1.10" //  序列化注解
 }
 
 kotlin {
@@ -48,9 +49,10 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             // ktor 相关
-            implementation(libs.bundles.ktor)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.kotlin.serialization)
+            implementation(libs.bundles.ktor) // 核心
+            implementation(libs.ktor.client.content.negotiation) //  内容解析
+            implementation(libs.kotlin.serialization) // 序列化
+            implementation(libs.ktor.client.logging) // 日志
             // 图片加载
             implementation(libs.kamel.image.default)
         }

@@ -17,14 +17,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import bookreading.composeapp.generated.resources.Qt
+import bookreading.composeapp.generated.resources.Res
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import io.ktor.http.Url
+import org.jetbrains.compose.resources.Font
 import xczcdjx.book.project.entity.BookEntity
 
 @Composable
@@ -57,7 +61,8 @@ fun PageItem(p: BookEntity, modifier: Modifier = Modifier) {
                 modifier.padding(horizontal = 8.dp, vertical = 36.dp).fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 lineHeight = 35.sp,
-                fontSize = 30.sp
+                fontSize = 30.sp,
+                fontFamily = FontFamily(Font(Res.font.Qt))
             )
             Text(
                 author,
