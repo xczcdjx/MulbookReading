@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import xczcdjx.book.project.component.PageItem
 import xczcdjx.book.project.constants.bookTest
 import xczcdjx.book.project.nativeService.DeviceService
+import xczcdjx.book.project.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
@@ -21,6 +22,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     val pageState = rememberPagerState(0) {
         bookData.size
     }
+    val vm=HomeViewModel()
     HorizontalPager(
         pageState,
         contentPadding = PaddingValues(
