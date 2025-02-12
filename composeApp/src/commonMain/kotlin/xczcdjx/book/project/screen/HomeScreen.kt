@@ -1,9 +1,13 @@
 package xczcdjx.book.project.screen
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -16,6 +20,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import xczcdjx.book.project.component.PageItem
 import xczcdjx.book.project.constants.bookTest
 import xczcdjx.book.project.nativeService.DeviceService
+import xczcdjx.book.project.viewmodel.Dispatch
 import xczcdjx.book.project.viewmodel.HomeViewModel
 
 object HomeScreen : Screen {
@@ -26,7 +31,17 @@ object HomeScreen : Screen {
             bookData.size
         }
         val vm = rememberScreenModel { HomeViewModel() }
-        HorizontalPager(
+        val count by vm.uiState.collectAsState()
+        Column {
+            Text("Count: ${count.count}")
+            TextButton({vm.dispatch(Dispatch.Increment)}){
+                Text("+1")
+            }
+            TextButton({vm.dispatch(Dispatch.Decrement)}){
+                Text("-1")
+            }
+        }
+        /*HorizontalPager(
             pageState,
             contentPadding = PaddingValues(
                 start = 32.dp,
@@ -37,6 +52,6 @@ object HomeScreen : Screen {
             pageSpacing = 16.dp
         ) {
             PageItem(bookData[it])
-        }
+        }*/
     }
 }
