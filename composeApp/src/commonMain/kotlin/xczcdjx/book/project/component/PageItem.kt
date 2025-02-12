@@ -23,6 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import bookreading.composeapp.generated.resources.Qt
 import bookreading.composeapp.generated.resources.Res
 import io.kamel.image.KamelImage
@@ -30,7 +32,6 @@ import io.kamel.image.asyncPainterResource
 import io.ktor.http.Url
 import org.jetbrains.compose.resources.Font
 import xczcdjx.book.project.entity.BookEntity
-
 @Composable
 fun PageItem(p: BookEntity, modifier: Modifier = Modifier) {
     Card(

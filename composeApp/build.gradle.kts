@@ -8,6 +8,8 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     kotlin("plugin.serialization") version "2.1.10" //  序列化注解
+    id("com.google.devtools.ksp") version "2.1.0-1.0.29"
+    id("de.jensklingenberg.ktorfit") version "2.2.0"
 }
 
 kotlin {
@@ -31,6 +33,7 @@ kotlin {
     sourceSets {
         val desktopMain by getting
         val voyagerVersion = "1.1.0-beta02"
+        val ktorfitVersion = "2.2.0"
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -60,6 +63,11 @@ kotlin {
             implementation("cafe.adriel.voyager:voyager-screenmodel:$voyagerVersion")
             // Transitions
             implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
+
+            // android viewmodel compose
+            implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
+            // ktorfit
+            implementation("de.jensklingenberg.ktorfit:ktorfit-lib:$ktorfitVersion")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

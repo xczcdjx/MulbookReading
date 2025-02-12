@@ -14,7 +14,7 @@ object Network {
     val client= HttpClient{
         // 配置默认参数
         defaultRequest {
-            url("http://192.168.124.31:3010")
+            url("http://192.168.1.2:3010")
         }
         // 日志插件
         install(Logging){
